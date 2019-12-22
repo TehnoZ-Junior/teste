@@ -43,36 +43,36 @@ public class Autonom extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor TleftDrive = null;
-    private DcMotor BleftDrive = null;
-    private DcMotor TrightDrive = null;
-    private DcMotor BrightDrive = null;
+    private DcMotor SF = null;
+    private DcMotor SJ = null;
+    private DcMotor DF = null;
+    private DcMotor DJ = null;
 
     @Override
     public void runOpMode() {
 
-        TleftDrive = hardwareMap.dcMotor.get("Tleft_drive");
-        BleftDrive = hardwareMap.dcMotor.get("Bleft_drive");
-        TrightDrive = hardwareMap.dcMotor.get("Tright_drive");
-        BrightDrive = hardwareMap.dcMotor.get("Bright_drive");
+        SF = hardwareMap.dcMotor.get("Tleft_drive");
+        SJ = hardwareMap.dcMotor.get("Bleft_drive");
+        DF = hardwareMap.dcMotor.get("Tright_drive");
+        DJ = hardwareMap.dcMotor.get("Bright_drive");
 
-        TleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        BleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        TrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        BrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        SF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        SJ.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DJ.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        TleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        BleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        SF.setDirection(DcMotorSimple.Direction.REVERSE);
+        SJ.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        TleftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BleftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        TrightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BrightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        SF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        SJ.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DJ.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        TleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        TrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        SF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        SJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -82,78 +82,78 @@ public class Autonom extends LinearOpMode {
         runtime.reset();
 
         LateralaS(0.5, 2700);
-        while(opModeIsActive() && !isStopRequested() && TleftDrive.isBusy() && BleftDrive.isBusy() && TrightDrive.isBusy() && BrightDrive.isBusy()) {
-            telemetry.addData("merge", TleftDrive.getTargetPosition());
+        while(opModeIsActive() && !isStopRequested() && SF.isBusy() && SJ.isBusy() && DF.isBusy() && DJ.isBusy()) {
+            telemetry.addData("merge", SF.getTargetPosition());
             telemetry.update();
         }
 
         Inainte(0.8, 700);
 
-        while(opModeIsActive() && !isStopRequested() && TleftDrive.isBusy() && BleftDrive.isBusy() && TrightDrive.isBusy() && BrightDrive.isBusy()) {
-            telemetry.addData("merge", TleftDrive.getTargetPosition());
+        while(opModeIsActive() && !isStopRequested() && SF.isBusy() && SJ.isBusy() && DF.isBusy() && DJ.isBusy()) {
+            telemetry.addData("merge", SF.getTargetPosition());
             telemetry.update();
         }
 
         LateralaS(0.5, -1600);
-        while(opModeIsActive() && !isStopRequested() && TleftDrive.isBusy() && BleftDrive.isBusy() && TrightDrive.isBusy() && BrightDrive.isBusy()) {
-            telemetry.addData("merge", TleftDrive.getTargetPosition());
+        while(opModeIsActive() && !isStopRequested() && SF.isBusy() && SJ.isBusy() && DF.isBusy() && DJ.isBusy()) {
+            telemetry.addData("merge", SF.getTargetPosition());
             telemetry.update();
         }
 
         Inainte(0.8, -3700);
-        while(opModeIsActive() && !isStopRequested() && TleftDrive.isBusy() && BleftDrive.isBusy() && TrightDrive.isBusy() && BrightDrive.isBusy()) {
-            telemetry.addData("merge", TleftDrive.getTargetPosition());
+        while(opModeIsActive() && !isStopRequested() && SF.isBusy() && SJ.isBusy() && DF.isBusy() && DJ.isBusy()) {
+            telemetry.addData("merge", SF.getTargetPosition());
             telemetry.update();
         }
 
         Inainte(0.8, 1000);
-        while(opModeIsActive() && !isStopRequested() && TleftDrive.isBusy() && BleftDrive.isBusy() && TrightDrive.isBusy() && BrightDrive.isBusy()) {
-            telemetry.addData("merge", TleftDrive.getTargetPosition());
+        while(opModeIsActive() && !isStopRequested() && SF.isBusy() && SJ.isBusy() && DF.isBusy() && DJ.isBusy()) {
+            telemetry.addData("merge", SF.getTargetPosition());
             telemetry.update();
         }
     }
 
 public void Inainte(double p, int t) {
-  TleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-  BleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-  TrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-  BrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  SF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  SJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  DF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  DJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-  TleftDrive.setTargetPosition(-t);
-  BleftDrive.setTargetPosition(-t);
-  TrightDrive.setTargetPosition(-t);
-  BrightDrive.setTargetPosition(-t);
+  SF.setTargetPosition(-t);
+  SJ.setTargetPosition(-t);
+  DF.setTargetPosition(-t);
+  DJ.setTargetPosition(-t);
 
-  TleftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-  BleftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-  TrightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-  BrightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  SF.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  SJ.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  DF.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  DJ.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-  TleftDrive.setPower(p);
-  BleftDrive.setPower(p);
-  TrightDrive.setPower(p);
-  BrightDrive.setPower(p);
+  SF.setPower(p);
+  SJ.setPower(p);
+  DF.setPower(p);
+  DJ.setPower(p);
   }
 
 public void LateralaS(double p, int t) {
-        TleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BleftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        TrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BrightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        SF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        SJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DJ.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        TleftDrive.setTargetPosition(-t);
-        BleftDrive.setTargetPosition(t);
-        TrightDrive.setTargetPosition(t);
-        BrightDrive.setTargetPosition(-t);
+        SF.setTargetPosition(-t);
+        SJ.setTargetPosition(t);
+        DF.setTargetPosition(t);
+        DJ.setTargetPosition(-t);
 
-        TleftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        BleftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        TrightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        BrightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        SF.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        SJ.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        DF.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        DJ.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        TleftDrive.setPower(p);
-        BleftDrive.setPower(p);
-        TrightDrive.setPower(p);
-        BrightDrive.setPower(p);
+        SF.setPower(p);
+        SJ.setPower(p);
+        DF.setPower(p);
+        DJ.setPower(p);
     }
 }

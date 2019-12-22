@@ -116,13 +116,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
 
-    private DcMotor TleftDrive = null;
+    private DcMotor SF = null;
 
-    private DcMotor BleftDrive = null;
+    private DcMotor SJ = null;
 
-    private DcMotor TrightDrive = null;
+    private DcMotor DF = null;
 
-    private DcMotor BrightDrive = null;
+    private DcMotor DJ = null;
 
     /*private DcMotor RidicareV = null;
 
@@ -156,13 +156,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
         // step (using the FTC Robot Controller app on the phone).
 
-        TleftDrive  = hardwareMap.get(DcMotor.class, "Tleft_drive");
+        SF  = hardwareMap.get(DcMotor.class, "Tleft_drive");
 
-        TrightDrive = hardwareMap.get(DcMotor.class, "Tright_drive");
+        DF = hardwareMap.get(DcMotor.class, "Tright_drive");
 
-        BleftDrive  = hardwareMap.get(DcMotor.class, "Bleft_drive");
+        SJ  = hardwareMap.get(DcMotor.class, "Bleft_drive");
 
-        BrightDrive = hardwareMap.get(DcMotor.class, "Bright_drive");
+        DJ = hardwareMap.get(DcMotor.class, "Bright_drive");
 
         /*RidicareV = hardwareMap.get(DcMotor.class,"RidicareV");
 
@@ -178,13 +178,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
 
 
-        TleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        SF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        TrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        BrightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DJ.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        BleftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        SJ.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         /*RidicareV.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -194,9 +194,9 @@ public class Mecanum_Mate extends LinearOpMode {
 
         RoataS.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
 
-        TleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        SF.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        BleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        SJ.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
 
@@ -218,13 +218,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.dpad_up) {
 
-                TleftDrive.setPower(power);
+                SF.setPower(power);
 
-                BleftDrive.setPower(power);
+                SJ.setPower(power);
 
-                TrightDrive.setPower(power);
+                DF.setPower(power);
 
-                BrightDrive.setPower(power);
+                DJ.setPower(power);
 
                 if (gamepad1.left_trigger!=0)
 
@@ -236,13 +236,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
                 if (!gamepad1.dpad_up) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     power=0.8;
 
@@ -258,13 +258,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.dpad_down) {
 
-                TleftDrive.setPower(-power);
+                SF.setPower(-power);
 
-                BleftDrive.setPower(-power);
+                SJ.setPower(-power);
 
-                TrightDrive.setPower(-power);
+                DF.setPower(-power);
 
-                BrightDrive.setPower(-power);
+                DJ.setPower(-power);
 
                 if (gamepad1.left_trigger!=0)
 
@@ -276,13 +276,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
                 if (!gamepad1.dpad_down) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     power=0.8;
 
@@ -296,13 +296,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.dpad_right) {
 
-                TleftDrive.setPower(power);
+                SF.setPower(power);
 
-                BleftDrive.setPower(-power);
+                SJ.setPower(-power);
 
-                TrightDrive.setPower(-power);
+                DF.setPower(-power);
 
-                BrightDrive.setPower(power);
+                DJ.setPower(power);
 
                 if (gamepad1.left_trigger!=0)
 
@@ -314,13 +314,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
                 if (!gamepad1.dpad_right){
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     power=0.8;
 
@@ -334,13 +334,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.dpad_left) {
 
-                TleftDrive.setPower(-power);
+                SF.setPower(-power);
 
-                BleftDrive.setPower(power);
+                SJ.setPower(power);
 
-                TrightDrive.setPower(power);
+                DF.setPower(power);
 
-                BrightDrive.setPower(-power);
+                DJ.setPower(-power);
 
                 if (gamepad1.left_trigger!=0)
 
@@ -352,13 +352,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
                 if (!gamepad1.dpad_left) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     power=0.8;
 
@@ -372,15 +372,15 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.y) {
 
-                TleftDrive.setPower(0.8);
+                SF.setPower(0.8);
 
-                BrightDrive.setPower(0.8);
+                DJ.setPower(0.8);
 
                 if (!gamepad1.y) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     break;
 
@@ -390,15 +390,15 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.a) {
 
-                BleftDrive.setPower(0.8);
+                SJ.setPower(0.8);
 
-                TrightDrive.setPower(0.8);
+                DF.setPower(0.8);
 
                 if (!(gamepad1.a)) {
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
                     break;
 
@@ -408,15 +408,15 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.x) {
 
-                TleftDrive.setPower(-0.8);
+                SF.setPower(-0.8);
 
-                BrightDrive.setPower(-0.8);
+                DJ.setPower(-0.8);
 
                 if (!(gamepad1.x)) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     break;
 
@@ -426,15 +426,15 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.b) {
 
-                BleftDrive.setPower(-0.8);
+                SJ.setPower(-0.8);
 
-                TrightDrive.setPower(-0.8);
+                DF.setPower(-0.8);
 
                 if (!(gamepad1.b)) {
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
                     break;
 
@@ -444,23 +444,23 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.right_bumper) {
 
-                TleftDrive.setPower(0.8);
+                SF.setPower(0.8);
 
-                BleftDrive.setPower(0.8);
+                SJ.setPower(0.8);
 
-                TrightDrive.setPower(-0.8);
+                DF.setPower(-0.8);
 
-                BrightDrive.setPower(-0.8);
+                DJ.setPower(-0.8);
 
                 if (!gamepad1.right_bumper) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     break;
 
@@ -470,23 +470,23 @@ public class Mecanum_Mate extends LinearOpMode {
 
             while (gamepad1.left_bumper) {
 
-                TleftDrive.setPower(-0.8);
+                SF.setPower(-0.8);
 
-                BleftDrive.setPower(-0.8);
+                SJ.setPower(-0.8);
 
-                TrightDrive.setPower(0.8);
+                DF.setPower(0.8);
 
-                BrightDrive.setPower(0.8);
+                DJ.setPower(0.8);
 
                 if (!gamepad1.left_bumper) {
 
-                    TleftDrive.setPower(0);
+                    SF.setPower(0);
 
-                    BleftDrive.setPower(0);
+                    SJ.setPower(0);
 
-                    TrightDrive.setPower(0);
+                    DF.setPower(0);
 
-                    BrightDrive.setPower(0);
+                    DJ.setPower(0);
 
                     break;
 
