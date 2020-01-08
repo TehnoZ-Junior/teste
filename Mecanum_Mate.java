@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @TeleOp(name="TeleOp1RobotAntrenament", group="Linear Opmode")
 
@@ -23,6 +25,12 @@ public class Mecanum_Mate extends LinearOpMode {
     private DcMotor RidicareE= null;
     private DcMotor RidicareV = null;
 
+    CRServo Brat_Cot;
+    CRServo Servomotor1 ;
+    CRServo Brat_Umar ;
+    BNO055IMU imu;
+    Orientation angles;
+
     double  power   = 0.7;
 
     @Override
@@ -30,6 +38,13 @@ public class Mecanum_Mate extends LinearOpMode {
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+
+        Brat_Cot = hardwareMap.get(CRServo.class, "Brat_Cot");
+        Servomotor1 = hardwareMap.get(CRServo.class,"Servo1");
+        Brat_Umar = hardwareMap.get(CRServo.class,"Brat_Umar");
 
         TleftDrive  = hardwareMap.get(DcMotor.class, "Tleft_drive");
         TrightDrive = hardwareMap.get(DcMotor.class, "Tright_drive");
@@ -55,6 +70,9 @@ public class Mecanum_Mate extends LinearOpMode {
 
         TleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         BleftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        imu.initialize(parameters);
 
         waitForStart();
         runtime.reset();
@@ -256,46 +274,97 @@ public class Mecanum_Mate extends LinearOpMode {
                 }
             }
 
-            while (gamepad2.dpad_up) {
+            while (gamepad2.left_stick_x==1) {
 
-                RidicareE.setPower(power);
+                RidicareE.setPower(1);
 
-                if(!gamepad2.dpad_up) {
+                if(gamepad2.left_stick_x==0) {
 
                     RidicareE.setPower(0);
 
                     break;
                 }
             }
+
+            while (gamepad2.left_stick_y==1) {
+
+                RidicareE.setPower(-1);
+
+                if(gamepad2.left_stick_y==0) {
+
+                    RidicareE.setPower(0);
+
+                    break;
+                }
+            }
+
+            while (gamepad2.right_stick_x==1) {
+
+                RidicareV.setPower(1);
+
+                if (gamepad2.right_stick_x==0) {
+
+                    RidicareV.setPower(0);
+
+                    break;
+                }
+            }
+
+            while (gamepad2.right_stick_y==1) {
+
+                RidicareV.setPower(-1);
+
+                if (gamepad2.right_stick_y==0) {
+
+                    RidicareV.setPower(0);
+
+                    break;
+                }
+            }
+
+            while (gamepad2.dpad_up){
+
+                Servomotor1.setPower(1);
+
+                if(!gamepad2.dpad_up){
+
+                    Servomotor1.setPower(0);
+
+                    break;
+                }
+            }
+
             while (gamepad2.dpad_down) {
 
-                RidicareE.setPower(-power);
+                Servomotor1.setPower(-1);
 
-                if(!gamepad2.dpad_down) {
+                if(!gamepad2.dpad_down){
 
-                    RidicareE.setPower(0);
-
-                    break;
-                }
-            }
-            while (gamepad2.dpad_right) {
-
-                RidicareV.setPower(power);
-
-                if (!gamepad2.dpad_right) {
-
-                    RidicareV.setPower(0);
+                    Servomotor1.setPower(0);
 
                     break;
                 }
             }
-            while (gamepad2.dpad_left) {
 
-                RidicareV.setPower(-power);
+            while (gamepad2.right_bumper){
 
-                if (!gamepad2.dpad_left) {
+                Brat_Umar.setPower(1);
 
-                    RidicareV.setPower(0);
+                if(!gamepad2.right_bumper){
+
+                    Brat_Umar.setPower(0);
+
+                    break;
+                }
+            }
+
+            while (gamepad2.left_bumper) {
+
+                Brat_Umar.setPower(-1);
+
+                if(!gamepad2.left_bumper){
+
+                    Brat_Umar.setPower(0);
 
                     break;
                 }
